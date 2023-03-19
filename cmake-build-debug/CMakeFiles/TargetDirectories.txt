@@ -1,0 +1,5 @@
+/Users/divkix/Documents/GitHub/cpp_stopwatch/cmake-build-debug/CMakeFiles/cpp_stopwatch.dir
+/Users/divkix/Documents/GitHub/cpp_stopwatch/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/divkix/Documents/GitHub/cpp_stopwatch/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/Users/divkix/Documents/GitHub/cpp_stopwatch/cmake-build-debug/CMakeFiles/cpp_stopwatch_autogen_timestamp_deps.dir
+/Users/divkix/Documents/GitHub/cpp_stopwatch/cmake-build-debug/CMakeFiles/cpp_stopwatch_autogen.dir

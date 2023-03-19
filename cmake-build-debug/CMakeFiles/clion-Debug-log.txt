@@ -1,0 +1,5 @@
+"/Users/divkix/Library/Application Support/JetBrains/Toolbox/apps/CLion/ch-0/223.8836.42/CLion.app/Contents/bin/cmake/mac/bin/cmake" -DCMAKE_BUILD_TYPE=Debug "-DCMAKE_MAKE_PROGRAM=/Users/divkix/Library/Application Support/JetBrains/Toolbox/apps/CLion/ch-0/223.8836.42/CLion.app/Contents/bin/ninja/mac/ninja" -G Ninja -S /Users/divkix/Documents/GitHub/cpp_stopwatch -B /Users/divkix/Documents/GitHub/cpp_stopwatch/cmake-build-debug
+-- Could NOT find WrapVulkanHeaders (missing: Vulkan_INCLUDE_DIR) 
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /Users/divkix/Documents/GitHub/cpp_stopwatch/cmake-build-debug

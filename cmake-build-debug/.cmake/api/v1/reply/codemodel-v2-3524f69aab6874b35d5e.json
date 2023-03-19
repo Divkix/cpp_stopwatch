@@ -1,0 +1,78 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"jsonFile" : "directory-.-Debug-f5ebdc15457944623624.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "cpp_stopwatch",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "cpp_stopwatch::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-cpp_stopwatch-Debug-0c7f953cdc803b7a5841.json",
+					"name" : "cpp_stopwatch",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "cpp_stopwatch_autogen::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-cpp_stopwatch_autogen-Debug-e893a6c7a8f371c4f092.json",
+					"name" : "cpp_stopwatch_autogen",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "cpp_stopwatch_autogen_timestamp_deps::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-cpp_stopwatch_autogen_timestamp_deps-Debug-7e5e525a612100460da8.json",
+					"name" : "cpp_stopwatch_autogen_timestamp_deps",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/Users/divkix/Documents/GitHub/cpp_stopwatch/cmake-build-debug",
+		"source" : "/Users/divkix/Documents/GitHub/cpp_stopwatch"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 4
+	}
+}
