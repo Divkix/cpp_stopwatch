@@ -1,0 +1,28 @@
+version: 2
+updates:
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "daily"
+    ignore:
+      - {
+          package-ecosystem: "github",
+          directory: "/",
+          dependency-name: "qt",
+          type: "semver",
+          update-type: "major",
+        }
+      - {
+          package-ecosystem: "github",
+          directory: "/",
+          dependency-name: "qt",
+          type: "semver",
+          update-type: "minor",
+        }
+      - {
+          package-ecosystem: "github",
+          directory: "/",
+          dependency-name: "qt",
+          type: "semver",
+          update-type: "patch",
+        }

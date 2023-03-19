@@ -1,0 +1,83 @@
+name: Build and Release Qt App
+
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "Tag for the release"
+        required: true
+      build_type:
+        description: "Build type (Release or Debug)"
+        required: true
+  push:
+    tags:
+      - "v*"
+
+env:
+  QT_VERSION: 6.2.0
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+        compiler: [gcc, clang]
+        build_type: [Release, Debug]
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Install dependencies
+        if: matrix.os == 'ubuntu-latest'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y build-essential libgl1-mesa-dev libxcb-xinerama0-dev libxkbcommon-x11-dev libfontconfig1-dev libdbus-1-dev libicu-dev libssl-dev qtbase5-private-dev
+
+      - name: Install dependencies
+        if: matrix.os == 'macos-latest'
+        run: |
+          brew update
+          brew install qt
+
+      - name: Install dependencies
+        if: matrix.os == 'windows-latest'
+        run: |
+          choco install qt
+
+      - name: Build app
+        run: |
+          qmake -config ${{ matrix.build_type }} CONFIG+=release
+          make -j$(nproc)
+
+      - name: Create release
+        if: github.event_name == 'workflow_dispatch'
+        uses: actions/create-release@v1
+        id: create_release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.event.inputs.tag }}
+          release_name: Release ${{ github.event.inputs.tag }}
+          draft: false
+          prerelease: false
+
+      - name: Create release
+        if: github.event_name == 'push'
+        uses: actions/create-release@v1
+        id: create_release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref }}
+          draft: false
+          prerelease: false
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: App
+          path: |
+            bin/App
