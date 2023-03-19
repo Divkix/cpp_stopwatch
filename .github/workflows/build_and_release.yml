@@ -1,6 +1,9 @@
 name: Build and Release Qt App
 
 on:
+  push:
+    tags:
+      - "v*"
   workflow_dispatch:
     inputs:
       tag:
@@ -9,9 +12,6 @@ on:
       build_type:
         description: "Build type (Release or Debug)"
         required: true
-  push:
-    tags:
-      - "v*"
 
 env:
   QT_VERSION: 6.2.0
@@ -51,27 +51,27 @@ jobs:
           qmake -config ${{ matrix.build_type }} CONFIG+=release
           make -j$(nproc)
 
-      - name: Create release
-        if: github.event_name == 'workflow_dispatch'
-        uses: actions/create-release@v1
-        id: create_release
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          tag_name: ${{ github.event.inputs.tag }}
-          release_name: Release ${{ github.event.inputs.tag }}
-          draft: false
-          prerelease: false
-
-      - name: Create release
+      - name: Create release from tag
         if: github.event_name == 'push'
+        id: create_release_from_tag
         uses: actions/create-release@v1
-        id: create_release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tag_name: ${{ github.ref }}
           release_name: Release ${{ github.ref }}
+          draft: false
+          prerelease: false
+
+      - name: Create release from manual trigger
+        if: github.event_name == 'workflow_dispatch'
+        id: create_release_from_manual
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.event.inputs.tag }}
+          release_name: Release ${{ github.event.inputs.tag }}
           draft: false
           prerelease: false
 
